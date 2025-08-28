@@ -7,4 +7,11 @@ else:
     print("Error Intente de nuevo")
     
 print ("alejandro")
+print ("alejandro")
+print ("alejandro")
+
+print ("alejandro")
+print ("alejandro")
+print ("alejandro")
+
     
