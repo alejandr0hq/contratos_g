@@ -12,28 +12,46 @@ Fecha_Incio = ""
 Fecha_Salida = ""
 
 #Este es el menu del generador de contratos
-print("=========== Generador de contratos legales===========: ")
+
+print("===========Generador de contratos legales===========\n ")
+#Aqui imprimimos el nombre del programa
+
 opcion = ""
+
 #Aqui entramos al ciclo while
+
 while opcion != "3": 
-    print("=========\nMenu=========")
-    print("1. Mostrar el contrato de arrendamiento: ")
-    print("2. Mostrar el contrato de prestacion de servicios: ")
-    print("3. Salir del generador de contratos: ")
-#Pedimos Datos
+    print("\t=========Menu=========\n")
+    print("1. Contrato de Arrendamiento: ")
+    print("2. Contrato de Prestacion de Servicios: ")
+    print("3. Salir del generador de contratos :\n ")
+    
+#Solicitamos Datos
+
     opcion = (input("Elija una opcion: "))
+#Aqui tenemos la condición
 
     if opcion == "1":
-       Fecha = int(input("Ingrese Fecha para el contrato: "))
-       Nombre_Part_de_contrato1 = (input("Ingrese Nombre del contrato (Arrendamientos): "))
-       Costo_de_arrendamientos = (input("Ingrese la cantidad en pesos: "))
-       Ubicacion = (input("Ingrese la Ubicacion del contrato de arrendamiento: "))
-       Costo_de_arrendamientos = int(input("Ingrese Costo del contrato de arrendamiento: "))
-       Fecha_Incio=  int(input("Ingrese Fecha de Inicio del contrarto: "))
-       Fecha_Salida = int(input("Ingrese Fecha de Final del contrato: "))
-       print("Mostrar Datos del contrato de arrendamientos: ")
+       Fecha = (input("Ingrese Fecha para el contrato: \n"))
+       Nombre_Part_de_contrato1 = (input("Ingrese Nombre del Arrendador :\n "))
+       Nombre_Part_de_contrato2 = (input("Ingrese el nombre del Arrendatario :\n "))
+       Costo_de_arrendamientos = (input("Ingrese la cantidad en pesos MX : $ "))
+       Ubicacion = (input("Ingrese la Ubicacion del inmueble :\n "))
+       Fecha_Incio=  (input("Ingrese Fecha de Inicio del contrarto:\n "))
+       Fecha_Salida = (input("Ingrese Fecha de Final del contrato:\n "))
+       
+       print("\n#Aqui se va a mostrar el contrato completo")
+       
+    #Aqui se solicitaran los datos del contrato #2
+    
     elif opcion == "2":
-        print("Fin del programa Beta de generador contratos: ")
+        print("Contrato no disponible")
+        
+    #Aqui se termina el programa
+    
+    elif opcion == 3 :
+        break
+    print("Fin del programa")
 
 
 
