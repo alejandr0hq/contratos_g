@@ -20,11 +20,12 @@ opcion = ""
 
 #Aqui entramos al ciclo while
 
-while opcion != "3": 
+while opcion != "4": 
     print("\t=========Menu=========\n")
     print("1. Contrato de Arrendamiento: ")
     print("2. Contrato de Prestacion de Servicios: ")
-    print("3. Salir del generador de contratos :\n ")
+    print("3. Contrato de Compra Venta:\n ")
+    print("4. Salir del generador de contratos :\n ")
     
 #Solicitamos Datos
 
@@ -46,10 +47,12 @@ while opcion != "3":
     
     elif opcion == "2":
         print("Contrato no disponible")
+    elif opcion == "3":
+        print("Contrato no disponible")
         
     #Aqui se termina el programa
     
-    elif opcion == 3 :
+    if opcion == 4 :
         break
     print("Fin del programa")
 
