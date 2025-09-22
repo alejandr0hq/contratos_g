@@ -26,3 +26,5 @@ estructuras_contratos = {
         ]
     }
 }
+contratos_generados = []
+contador_contratos = 1
