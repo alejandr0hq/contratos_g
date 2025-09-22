@@ -5,8 +5,12 @@ from Salir import *
 from Contrato_arrendamiento import *
 from Datos import *
 
+# Variables
+contratos_generados = [ ]
+contador_contratos = 1
 opcion = ""
 
+# Menu para la función generar contratos
 def generar_contratos ( ) :
     print ( "\n" + "=" * 55 )
     print ( "\t\tGENERAR CONTRATOS" )

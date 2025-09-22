@@ -1,3 +1,4 @@
+# Plantillas de los tipos de contratos
 plantillas_contratos = {
     'prestacion_servicios': {
         'titulo': 'CONTRATO DE PRESTACIÓN DE SERVICIOS',
@@ -27,8 +28,10 @@ plantillas_contratos = {
     }
 }
 
+# Importar de otros archivos
 from Validar_datos import validar_datos
 
+# Función para solicitar los datos 
 def datos ( tipo_contrato ) :
     datos = { }
     plantilla = plantillas_contratos [ tipo_contrato ]

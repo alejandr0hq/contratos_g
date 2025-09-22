@@ -1,3 +1,4 @@
+# Función que valida el formato de la fecha
 def validar_fecha ( fecha ) :
     if len ( fecha ) != 10 :
         return False
@@ -17,6 +18,7 @@ def validar_fecha ( fecha ) :
     except :
         return False 
     
+# Función que valida el formato de los datos
 def validar_datos ( campo , valor ) :
     try :
         if 'valor' in campo.lower ( ) or 'deposito' in campo.lower ( ) or 'bien' in campo.lower( ) :

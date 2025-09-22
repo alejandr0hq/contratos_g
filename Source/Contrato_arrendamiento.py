@@ -1,6 +1,8 @@
+# Importar desde otros archivos
 from Fecha import fecha
 from Datos import plantillas_contratos
 
+# Función que llena el contrato
 def contrato_arrendamiento ( datos ) :
     fecha_actual = fecha ( )
     contrato = f"""
