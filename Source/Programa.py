@@ -3,6 +3,7 @@ from Menu import *
 from Opción import *
 from Salir import *
 from Contrato_arrendamiento import *
+from Datos import *
 
 opcion = ""
 
@@ -30,7 +31,7 @@ while opcion != "6" :
         while opcion != "4" :
 
             if opcion == "1" :
-                contrato_arrendamiento ( )
+                contrato_arrendamiento ( datos )
 
             elif opcion == "2" :
                 #contrato_prestacion_servicios ( )
