@@ -1,4 +1,5 @@
 from Programa import contratos_generados
+from Registro import *
  
 # Función que guarda el contrato como archivo .txt
 def guardar_contrato_archivo ( contenido , tipo , datos ) :
