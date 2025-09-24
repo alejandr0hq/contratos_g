@@ -33,5 +33,5 @@ def guardar_contrato_archivo ( contenido , tipo , datos ) :
         print ( f"\n- - - Error: { str ( e ) } - - -\n" )
         print ( "=" * 55 )
 
-        # Si manda error lo guarda en la memoria
+        # Si manda error lo guarda en la memoria    
         return guardar_contrato_memoria ( contenido , tipo , datos )
