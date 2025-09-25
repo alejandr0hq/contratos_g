@@ -25,8 +25,8 @@ plantillas_contratos = {
     'prestacion_servicios': {
         'titulo': 'CONTRATO DE PRESTACIÓN DE SERVICIOS',
         'campos': [
-            'nombre_prestador', 'telefono_prestador', 'direccion_prestador',
-            'nombre_cliente', 'telefono_cliente', 'direccion_cliente',
+            'nombre_completo_prestador', 'telefono_prestador', 'direccion_prestador',
+            'nombre_completo_cliente', 'telefono_cliente', 'direccion_cliente',
             'descripcion_servicio', 'valor_contrato', 'fecha_inicio',
             'fecha_fin', 'forma_pago', 'ciudad'
         ]
@@ -34,8 +34,8 @@ plantillas_contratos = {
     'arrendamiento': {
         'titulo': 'CONTRATO DE ARRENDAMIENTO',
         'campos': [
-            'nombre_arrendador', 'telefono_arrendador', 'direccion_arrendador',
-            'nombre_arrendatario', 'telefono_arrendatario', 'direccion_arrendatario',
+            'nombre_completo_arrendador', 'telefono_arrendador', 'direccion_arrendador',
+            'nombre_completo_arrendatario', 'telefono_arrendatario', 'direccion_arrendatario',
             'direccion_inmueble', 'valor_arriendo', 'valor_deposito',
             'fecha_inicio', 'duracion_meses', 'ciudad'
         ]
@@ -43,8 +43,8 @@ plantillas_contratos = {
     'compra_venta': {
         'titulo': 'CONTRATO DE COMPRA Y VENTA',
         'campos': [
-            'nombre_vendedor', 'telefono_vendedor', 'direccion_vendedor',
-            'nombre_comprador', 'telefono_comprador', 'direccion_comprador',
+            'nombre_completo_vendedor', 'telefono_vendedor', 'direccion_vendedor',
+            'nombre_completo_comprador', 'telefono_comprador', 'direccion_comprador',
             'descripcion_bien', 'valor_bien', 'ciudad', 'fecha_transaccion'
         ]
     }
@@ -59,7 +59,7 @@ contador_contratos = 1
 
 def fecha ( ) :
     ahora = datetime.now ( )
-    fecha = ahora.strftime ( "%Y/%m/%d  %H:%M:$S" )
+    return ahora.strftime ( "%Y/%m/%d  %H:%M:$S" )
 
 def validar_nombre ( nombre ) :
     if not nombre or len ( nombre.strip ( ) ) < 2 :
@@ -67,7 +67,7 @@ def validar_nombre ( nombre ) :
     return True
 
 def validar_telefono ( telefono ) :
-    if len ( telefono ) < 9 or len ( telefono ) > 12 :
+    if len ( telefono ) < 9 or len ( telefono ) > 13 :
         return False
     return True
 
@@ -111,7 +111,7 @@ def validar_entrada ( campo , valor ) :
         elif 'telefono' in campo.lower():
             if not validar_telefono ( valor ) :
                 raise ValueError ( "El teléfono debe tener entre 9 y 12 dígitos numéricos." )
-        elif 'valor' in campo.lower ( ) or 'deposito' in campo.lower ( ) or 'bien' in campo.lower ( ) :
+        elif 'valor' in campo.lower ( ) or 'deposito' in campo.lower ( ) :
             if not validar_precio ( valor ) :
                 raise ValueError ( "El valor debe ser un número mayor a 0.")
         elif 'duracion' in campo.lower ( ) and 'mes' in campo.lower ( ) :
@@ -121,6 +121,8 @@ def validar_entrada ( campo , valor ) :
                     raise ValueError ( "La duración debe ser entre 1 y 180 meses." )
             except ValueError :
                 raise ValueError ( "La duración debe ser un número entero." )
+        elif len ( 'fecha_inicio' ) <10 or len ( 'fecha_fin' ) > 10 :
+            raise ValueError ( "La fecha debe contener el formato (DD/MM/AAAA)." )
         return True        
     except ValueError as error :
         print ( "\n" + "=" * 55 )
@@ -145,6 +147,8 @@ def solicitar_datos ( tipo_contrato ) :
                 else :
                     prompt = f"{campo_formateado}: "
                 valor = input ( prompt ).strip ( )
+                if not any ( x in campo.lower ( ) for x in [ 'valor' , 'telefono' , 'fecha' , 'deposito' , 'duracion' , 'mes' ] ) :
+                    valor = valor.title ( ) 
                 if validar_entrada ( campo , valor ) :
                     valor_valido = valor
                     break
@@ -190,21 +194,23 @@ CLÁUSULAS:
 
 Dado en {ciudad}, a los {fecha_actual}
 
+
+
 _________________________          _________________________
-{parte1_rol_mayuscula}                         {parte2_rol_mayuscula}
-{parte1_nombre}                 {parte2_nombre}
-Teléfono {parte1_telefono}          Teléfono {parte2_telefono}
+{parte1_rol_mayuscula:<20} {parte2_rol_mayuscula:<20}
+{parte1_nombre:<35} {parte2_nombre:<35}
+Teléfono {parte1_telefono:<15} Teléfono {parte2_telefono:<15}
 """
 
     if tipo_contrato == 'prestacion_servicios':
         config = {
             'titulo': plantillas_contratos['prestacion_servicios']['titulo'],
-            'parte1_nombre': datos['nombre_prestador'],
+            'parte1_nombre': datos['nombre_completo_prestador'],
             'parte1_telefono': datos['telefono_prestador'],
             'parte1_direccion': datos['direccion_prestador'],
             'parte1_rol': 'EL PRESTADOR',
             'parte1_rol_mayuscula': 'EL PRESTADOR',
-            'parte2_nombre': datos['nombre_cliente'],
+            'parte2_nombre': datos['nombre_completo_cliente'],
             'parte2_telefono': datos['telefono_cliente'],
             'parte2_direccion': datos['direccion_cliente'],
             'parte2_rol': 'EL CLIENTE',
@@ -227,12 +233,12 @@ obligaciones establecidas en este contrato."""
     elif tipo_contrato == 'arrendamiento':
         config = {
             'titulo': plantillas_contratos['arrendamiento']['titulo'],
-            'parte1_nombre': datos['nombre_arrendador'],
+            'parte1_nombre': datos['nombre_completo_arrendador'],
             'parte1_telefono': datos['telefono_arrendador'],
             'parte1_direccion': datos['direccion_arrendador'],
             'parte1_rol': 'EL ARRENDADOR',
             'parte1_rol_mayuscula': 'EL ARRENDADOR',
-            'parte2_nombre': datos['nombre_arrendatario'],
+            'parte2_nombre': datos['nombre_completo_arrendatario'],
             'parte2_telefono': datos['telefono_arrendatario'],
             'parte2_direccion': datos['direccion_arrendatario'],
             'parte2_rol': 'EL ARRENDATARIO',
@@ -258,12 +264,12 @@ establecidas por la ley y este contrato."""
     else:  # compra_venta
         config = {
             'titulo': plantillas_contratos['compra_venta']['titulo'],
-            'parte1_nombre': datos['nombre_vendedor'],
+            'parte1_nombre': datos['nombre_completo_vendedor'],
             'parte1_telefono': datos['telefono_vendedor'],
             'parte1_direccion': datos['direccion_vendedor'],
             'parte1_rol': 'EL VENDEDOR',
             'parte1_rol_mayuscula': 'EL VENDEDOR',
-            'parte2_nombre': datos['nombre_comprador'],
+            'parte2_nombre': datos['nombre_completo_comprador'],
             'parte2_telefono': datos['telefono_comprador'],
             'parte2_direccion': datos['direccion_comprador'],
             'parte2_rol': 'EL COMPRADOR',
@@ -291,11 +297,11 @@ def guardar_archivo ( contenido , tipo , datos ) :
         if not os.path.exists ( directorio ) :
             os.makedirs ( directorio )
         if tipo == 'prestacion_servicios' :
-            cliente = datos [ 'nombre_cliente' ]
+            cliente = datos [ 'nombre_completo_cliente' ]
         elif tipo == 'arrendamiento' :
-            cliente = datos [ 'nombre_arrendatario' ]
+            cliente = datos [ 'nombre_completo_arrendatario' ]
         else :
-            cliente = datos [ 'nombre_comprador' ]
+            cliente = datos [ 'nombre_completo_comprador' ]
 
         cliente_formato = "".join(c for c in cliente if c.isalnum() or c in (' ', '_')).rstrip()
         cliente_formato = cliente_formato.replace(' ', '_')        
@@ -307,7 +313,7 @@ def guardar_archivo ( contenido , tipo , datos ) :
         contratos_generados.append ( info_contrato )
         guardar_registro ( info_contrato )
         print ( "\n" + "=" * 55 )
-        print ( f"\n- - - Archivo creado exitosamente: {nombre_archivo}. - - -" )
+        print ( f"\n- - - Archivo creado exitosamente: {nombre_archivo} - - -" )
         print ( f"- - - ID del contrato: {contador_contratos}. - - -\n" )
         print ( "=" * 55 )
         contador_contratos += 1
@@ -322,11 +328,11 @@ def guardar_contrato_memoria ( contenido , tipo , datos ) :
     global contador_contratos    
     try:
         if tipo == 'prestacion_servicios' :
-            cliente = datos [ 'nombre_cliente' ]
+            cliente = datos [ 'nombre_completo_cliente' ]
         elif tipo == 'arrendamiento' :
-            cliente = datos [ 'nombre_arrendatario' ]
+            cliente = datos [ 'nombre_completo_arrendatario' ]
         else:
-            cliente = datos [ 'nombre_comprador' ]
+            cliente = datos [ 'nombre_completo_comprador' ]
         cliente_limpio = "".join ( c for c in cliente if c.isalnum ( ) or c in ( ' ' , '_' ) ).rstrip ( )
         nombre_archivo = f"{tipo}_{cliente_limpio.replace(' ', '_')}_{contador_contratos}.txt"
         info_contrato = ( contador_contratos , tipo , nombre_archivo , cliente, contenido )
@@ -351,13 +357,13 @@ def ver_contratos_generados ( ) :
     print ( "=" * 55 )
     print ("\n- - - CONTRATOS GENERADOS. - - -\n" )
     print ( "=" * 55 )
-    print ( f"{'ID':<5} | {'Tipo':<30} | {'Cliente':<30} | {'Archivo':<50} | {'Estado':<30}" )
-    print ( "-" * 85)
+    print ( f"{'ID':<3} | {'Tipo':<25} | {'Cliente':<35} | {'Archivo':75} | {'Estado':<30}" )
+    print ( "-" * 170)
     for contrato in contratos_generados :
         id_contrato , tipo, archivo , cliente , contenido = contrato
         tipo_mostrar = tipo.replace ( '_' , ' ' ).title ( )
         estado = "Archivo OK" if os.path.exists ( archivo ) else "Solo memoria"
-        print ( f"{str(id_contrato):<5} | {tipo_mostrar:<30} | {cliente:<50} | {archivo:<30} | {estado:<30}")
+        print ( f"{str(id_contrato):<3} | {tipo_mostrar:<25} | {cliente:<35} | {archivo:<75} | {estado:<30}")
 
 def buscar_contrato ( ) :
     if not contratos_generados :
@@ -501,9 +507,9 @@ def editar_contrato ( ) :
                 print ( error_msg )
                 logging.error ( error_msg )
                 print ( "Los cambios se guardarán solo en memoria." )
-            nuevo_cliente = nuevos_datos.get ( 'nombre_cliente', 
-                          nuevos_datos.get ( 'nombre_arrendatario' , 
-                          nuevos_datos.get ( 'nombre_comprador' , cliente ) ) )
+            nuevo_cliente = nuevos_datos.get ( 'nombre_completo_cliente', 
+                          nuevos_datos.get ( 'nombre_completo_arrendatario' , 
+                          nuevos_datos.get ( 'nombre_completo_comprador' , cliente ) ) )
             nueva_tupla = (id_actual , tipo , nombre_archivo , nuevo_cliente , nuevo_contenido )
             contratos_generados [ indice_contrato ] = nueva_tupla
             try :
@@ -636,7 +642,7 @@ def procesar_generacion_contrato ( tipo_contrato ) :
             print ( "=" * 55 )
             return False
         print ( "\n" + "=" * 55 )
-        print ( "\n- - -Generando contrato... - - -\n" )
+        print ( "\n- - - Generando contrato... - - -\n" )
         print ( "=" * 55 )
         contenido = reemplazar_contenido_contrato ( tipo_contrato , datos )
         if contenido :
