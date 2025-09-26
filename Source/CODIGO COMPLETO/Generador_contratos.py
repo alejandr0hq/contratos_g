@@ -22,7 +22,7 @@ def fecha ( ) :
     return ahora.strftime ( "%Y/%m/%d  %H:%M:$S" )
 
 # ====================================================================
-# VARIABLES GLOBALES
+# VARIABLES GLOBALESs
 # ====================================================================
 
 from Plantillas import plantillas_contratos
