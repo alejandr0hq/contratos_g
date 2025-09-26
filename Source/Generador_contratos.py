@@ -51,29 +51,6 @@ def validar_precio ( precio_str ) :
     except ValueError :
         return False
 
-def mostrar_menu_principal ( ) :
-    print( "\n" + "=" * 55 )
-    print( "\t\tGENERADOR DE CONTRATOS" )
-    print( "=" * 55 )
-    print( "1. Generar Contrato." )
-    print( "2. Ver contratos generados." )
-    print( "3. Buscar contrato." )
-    print( "4. Mostrar contrato completo." )
-    print( "5. Editar contrato existente." )
-    print( "6. Borrar contrato." )
-    print( "7. Salir." )
-    print( "=" * 55 )
-
-def mostrar_menu_contratos ( ) :
-    print ( "\n" + "=" * 55 )
-    print ( "\t\tGENERAR TIPO DE CONTRATO" )
-    print ( "=" * 55 )
-    print ( "1. Generar Contrato de Prestación de Servicios." )
-    print ( "2. Generar Contrato de Arrendamiento." )
-    print ( "3. Generar Contrato de Compra y Venta." )
-    print ( "4. Volver." )
-    print ( "=" * 55 )
-
 def validar_entrada ( campo , valor ) :
     try:
         valor = valor.strip ( )        
@@ -116,11 +93,12 @@ def mostrar_menu_principal ( ) :
     print( "\t\tGENERADOR DE CONTRATOS" )
     print( "=" * 55 )
     print( "1. Generar Contrato." )
-    print( "2. Ver contratos generados" )
-    print( "3. Buscar contrato" )
-    print( "4. Mostrar contrato completo" )
-    print( "5. Editar contrato existente" )
-    print( "6. Salir" )
+    print( "2. Ver contratos generados." )
+    print( "3. Buscar contrato." )
+    print( "4. Mostrar contrato completo." )
+    print( "5. Editar contrato existente." )
+    print(" 6. Borrar contrato." )
+    print( "6. Salir." )
     print( "=" * 55 )
 
 def mostrar_menu_contratos ( ) :
