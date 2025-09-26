@@ -51,7 +51,6 @@ def validar_precio ( precio_str ) :
     except ValueError :
         return False
 
-<<<<<<< HEAD
 def mostrar_menu_principal ( ) :
     print( "\n" + "=" * 55 )
     print( "\t\tGENERADOR DE CONTRATOS" )
@@ -75,8 +74,6 @@ def mostrar_menu_contratos ( ) :
     print ( "4. Volver." )
     print ( "=" * 55 )
 
-=======
->>>>>>> f6e2781684ae8ee2784ac5db8d32f7d23bb2dd6d
 def validar_entrada ( campo , valor ) :
     try:
         valor = valor.strip ( )        
