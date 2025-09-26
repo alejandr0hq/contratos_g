@@ -97,8 +97,8 @@ def mostrar_menu_principal ( ) :
     print( "3. Buscar contrato." )
     print( "4. Mostrar contrato completo." )
     print( "5. Editar contrato existente." )
-    print(" 6. Borrar contrato." )
-    print( "6. Salir." )
+    print( "6. Borrar contrato." )
+    print( "7. Salir." )
     print( "=" * 55 )
 
 def mostrar_menu_contratos ( ) :
