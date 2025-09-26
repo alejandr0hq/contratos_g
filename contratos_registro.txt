@@ -2,4 +2,8 @@
 3|arrendamiento|contratos/arrendamiento_Kenneth_Zuany_Ortega_3.txt|Kenneth Zuany Ortega
 4|prestacion_servicios|contratos/prestacion_servicios_Oscar_Gabriel_Reyes_Delgado_4.txt|Oscar Gabriel Reyes Delgado
 5|prestacion_servicios|contratos/prestacion_servicios_Kevin_Alejandro_Hernandez_Quintana_5.txt|Kevin Alejandro Hernandez Quintana
+<<<<<<< HEAD
 6|compra_venta|contratos/compra_venta_Kenneth_Zuany_6.txt|Kenneth Zuany
+=======
+6|prestacion_servicios|contratos/prestacion_servicios_Kenneth_Zuany_Ortega_6.txt|Kenneth Zuany Ortega
+>>>>>>> f6e2781684ae8ee2784ac5db8d32f7d23bb2dd6d

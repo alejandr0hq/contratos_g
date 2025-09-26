@@ -7,7 +7,7 @@ from datetime import datetime
 import logging
 
 # ====================================================================
-# LOGGING (ARCHIVO LOGS DE ERRORES)
+# LOGGING (ARCHIVO LOGS DE ERRORES) , DATETIME
 # ====================================================================
 
 logging.basicConfig (
@@ -17,38 +17,15 @@ logging.basicConfig (
     encoding = 'utf-8'
 )
 
+def fecha ( ) :
+    ahora = datetime.now ( )
+    return ahora.strftime ( "%Y/%m/%d  %H:%M:$S" )
+
 # ====================================================================
 # VARIABLES GLOBALES
 # ====================================================================
 
-plantillas_contratos = {        
-    'prestacion_servicios': {
-        'titulo': 'CONTRATO DE PRESTACIÓN DE SERVICIOS',
-        'campos': [
-            'nombre_completo_prestador', 'telefono_prestador', 'direccion_prestador',
-            'nombre_completo_cliente', 'telefono_cliente', 'direccion_cliente',
-            'descripcion_servicio', 'valor_contrato', 'fecha_inicio',
-            'fecha_fin', 'forma_pago', 'ciudad'
-        ]
-    },
-    'arrendamiento': {
-        'titulo': 'CONTRATO DE ARRENDAMIENTO',
-        'campos': [
-            'nombre_completo_arrendador', 'telefono_arrendador', 'direccion_arrendador',
-            'nombre_completo_arrendatario', 'telefono_arrendatario', 'direccion_arrendatario',
-            'direccion_inmueble', 'valor_arriendo', 'valor_deposito',
-            'fecha_inicio', 'duracion_meses', 'ciudad'
-        ]
-    },
-    'compra_venta': {
-        'titulo': 'CONTRATO DE COMPRA Y VENTA',
-        'campos': [
-            'nombre_completo_vendedor', 'telefono_vendedor', 'direccion_vendedor',
-            'nombre_completo_comprador', 'telefono_comprador', 'direccion_comprador',
-            'descripcion_bien', 'valor_bien', 'ciudad', 'fecha_transaccion'
-        ]
-    }
-}
+from Plantillas import plantillas_contratos
 
 contratos_generados = [ ]
 contador_contratos = 1
@@ -56,10 +33,6 @@ contador_contratos = 1
 # ====================================================================
 # FUNCIONES DE VALIDACIÓN
 # ====================================================================
-
-def fecha ( ) :
-    ahora = datetime.now ( )
-    return ahora.strftime ( "%Y/%m/%d  %H:%M:$S" )
 
 def validar_nombre ( nombre ) :
     if not nombre or len ( nombre.strip ( ) ) < 2 :
@@ -78,6 +51,7 @@ def validar_precio ( precio_str ) :
     except ValueError :
         return False
 
+<<<<<<< HEAD
 def mostrar_menu_principal ( ) :
     print( "\n" + "=" * 55 )
     print( "\t\tGENERADOR DE CONTRATOS" )
@@ -101,6 +75,8 @@ def mostrar_menu_contratos ( ) :
     print ( "4. Volver." )
     print ( "=" * 55 )
 
+=======
+>>>>>>> f6e2781684ae8ee2784ac5db8d32f7d23bb2dd6d
 def validar_entrada ( campo , valor ) :
     try:
         valor = valor.strip ( )        
@@ -130,6 +106,36 @@ def validar_entrada ( campo , valor ) :
         print ( f"\n- - - Error de validación: {error}. - - -\n" )
         print ( "=" * 55 )
         return False
+
+# ====================================================================
+# MENUS
+# ====================================================================
+
+def mostrar_menu_principal ( ) :
+    print( "\n" + "=" * 55 )
+    print( "\t\tGENERADOR DE CONTRATOS" )
+    print( "=" * 55 )
+    print( "1. Generar Contrato." )
+    print( "2. Ver contratos generados" )
+    print( "3. Buscar contrato" )
+    print( "4. Mostrar contrato completo" )
+    print( "5. Editar contrato existente" )
+    print( "6. Salir" )
+    print( "=" * 55 )
+
+def mostrar_menu_contratos ( ) :
+    print ( "\n" + "=" * 55 )
+    print ( "\t\tGENERAR TIPO DE CONTRATO" )
+    print ( "=" * 55 )
+    print ( "1. Generar Contrato de Prestación de Servicios." )
+    print ( "2. Generar Contrato de Arrendamiento." )
+    print ( "3. Generar Contrato de Compra y Venta." )
+    print ( "4. Volver." )
+    print ( "=" * 55 )
+
+# ====================================================================
+# SOLICITAR DATOS
+# ====================================================================
 
 def solicitar_datos ( tipo_contrato ) :
     datos = { }
@@ -174,6 +180,10 @@ def solicitar_datos ( tipo_contrato ) :
             return None
         datos [ campo ] = valor_valido
     return datos
+
+# ====================================================================
+# REEMPLAZAR CONTENIDO CONTRATO
+# ====================================================================
 
 def reemplazar_contenido_contrato ( tipo_contrato , datos ) :
     fecha_actual = fecha ( ) 
@@ -290,6 +300,9 @@ CUARTA - FECHA: La presente transacción se realizó el {datos['fecha_transaccio
         }
     
     return template_base.format ( **config )
+# ====================================================================
+# GUARDAR CONTRATO
+# ====================================================================
 
 def guardar_archivo ( contenido , tipo , datos ) :
     global contador_contratos    
@@ -348,7 +361,11 @@ def guardar_contrato_memoria ( contenido , tipo , datos ) :
         print ( error_msg )
         logging.error ( error_msg )
         return None
-    
+
+# ====================================================================
+# VER CONTRATOS GENERADOS
+# ====================================================================
+
 def ver_contratos_generados ( ) :
     if not contratos_generados :
         print ( "\n" + "=" * 55 )
@@ -365,6 +382,10 @@ def ver_contratos_generados ( ) :
         tipo_mostrar = tipo.replace ( '_' , ' ' ).title ( )
         estado = "Archivo OK" if os.path.exists ( archivo ) else "Solo memoria"
         print ( f"{str(id_contrato):<3} | {tipo_mostrar:<25} | {cliente:<35} | {archivo:<75} | {estado:<30}")
+
+# ====================================================================
+# BUSCAR CONTRATOS
+# ====================================================================
 
 def buscar_contrato ( ) :
     if not contratos_generados :
@@ -402,6 +423,10 @@ def buscar_contrato ( ) :
         print ( "\n" + "=" * 55 )
         print ( "\n- - - No se encontraron contratos con ese nombre de cliente. - - -\n" )
         print ( "=" * 55 )
+
+# ====================================================================
+# MOSTRAR CONTRATO (TERMINAL)
+# ====================================================================
 
 def mostrar_contrato_completo ( ) :
     if not contratos_generados :
@@ -455,6 +480,10 @@ def mostrar_contrato_completo ( ) :
         error_msg = f"Error al buscar el contrato: {error}"
         print ( error_msg )
         logging.error ( error_msg )
+
+# ====================================================================
+# EDITAR CONTRATO
+# ====================================================================
 
 def editar_contrato ( ) :
     if not contratos_generados:
@@ -588,7 +617,7 @@ def borrar_contrato():
         logging.error(error_msg)
 
 # ====================================================================
-# FUNCIONES PARA MANEJO DEL REGISTRO   
+# REGISTRO   
 # ====================================================================
 
 def guardar_registro ( info_contrato ) :
@@ -677,7 +706,7 @@ def cargar_contratos_desde_registro ( ) :
         logging.error ( error_msg )
 
 # ====================================================================
-# FUNCIONES DE PROCESAMIENTO DE CONTRATOS
+# PROCESAMIENTO DE CONTRATOS
 # ====================================================================
 
 def procesar_generacion_contrato ( tipo_contrato ) :
@@ -722,7 +751,7 @@ def procesar_generacion_contrato ( tipo_contrato ) :
         return False
 
 # ====================================================================
-# FUNCIÓN PRINCIPAL
+# PROGRAMA PRINCIPAL
 # ====================================================================
 
 def programa_principal ( ) :
