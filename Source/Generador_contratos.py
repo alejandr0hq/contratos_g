@@ -72,8 +72,11 @@ def validar_entrada ( campo , valor ) :
                     raise ValueError ( "La duración debe ser entre 1 y 180 meses." )
             except ValueError :
                 raise ValueError ( "La duración debe ser un número entero." )
-        elif len ( 'fecha_inicio' ) <10 or len ( 'fecha_fin' ) > 10 :
-            raise ValueError ( "La fecha debe contener el formato (DD/MM/AAAA)." )
+        elif 'fecha' in campo.lower ( ) :
+            try :
+                datetime.strptime ( valor , "%d/%m/%Y" )
+            except ValueError :
+                raise ValueError ( "La fecha debe tener el formato (DD/MM/AAAA)" )
         return True        
     except ValueError as error :
         print ( "\n" + "=" * 55 )
@@ -246,7 +249,7 @@ QUINTA - OBLIGACIONES: Las partes se comprometen a cumplir con las obligaciones
 establecidas por la ley y este contrato."""
         }
     
-    else:  # compra_venta
+    else:  
         config = {
             'titulo': plantillas_contratos['compra_venta']['titulo'],
             'parte1_nombre': datos['nombre_completo_vendedor'],
