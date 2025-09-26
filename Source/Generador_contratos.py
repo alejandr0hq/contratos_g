@@ -89,17 +89,17 @@ def validar_entrada ( campo , valor ) :
 # ====================================================================
 
 def mostrar_menu_principal ( ) :
-    print( "\n" + "=" * 55 )
-    print( "\t\tGENERADOR DE CONTRATOS" )
-    print( "=" * 55 )
-    print( "1. Generar Contrato." )
-    print( "2. Ver contratos generados." )
-    print( "3. Buscar contrato." )
-    print( "4. Mostrar contrato completo." )
-    print( "5. Editar contrato existente." )
-    print( "6. Borrar contrato." )
-    print( "7. Salir." )
-    print( "=" * 55 )
+    print ( "\n" + "=" * 55 )
+    print ( "\t\tGENERADOR DE CONTRATOS" )
+    print ( "=" * 55 )
+    print ( "1. Generar Contrato." )
+    print ( "2. Ver contratos generados." )
+    print ( "3. Buscar contrato." )
+    print ( "4. Mostrar contrato completo." )
+    print ( "5. Editar contrato existente." )
+    print ( "6. Borrar contrato." )
+    print ( "7. Salir." )
+    print ( "=" * 55 )
 
 def mostrar_menu_contratos ( ) :
     print ( "\n" + "=" * 55 )
@@ -741,7 +741,7 @@ def programa_principal ( ) :
     while True:
         try:
             mostrar_menu_principal ( )
-            opcion = input ( "\nSeleccione una opción (1-6): " ).strip ( )
+            opcion = input ( "\nSeleccione una opción (1-7): " ).strip ( )
             if opcion == '1':
                 mostrar_menu_contratos ( )
                 opcion = input ( "\nSeleccione una opción (1-4): " ).strip ( )
@@ -775,7 +775,7 @@ def programa_principal ( ) :
                 break
             else:
                 print ( "\n" + "=" * 55 )
-                print ( "\n- - - Opción inválida. Por favor seleccione una opción del 1 al 6. - - -\n")
+                print ( "\n- - - Opción inválida. Por favor seleccione una opción del 1 al 7. - - -\n")
                 print ( "=" * 55 )
             input("\nPresione Enter para continuar...")
         except KeyboardInterrupt :
