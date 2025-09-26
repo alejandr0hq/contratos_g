@@ -193,3 +193,55 @@ def editar_contrato():
         error_msg = f"Error al editar el contrato: {error}"
         print(error_msg)
         logging.error(error_msg)
+
+def borrar_contrato():
+    print ( "\n" + "=" * 55 )
+    print ( "\n- - - Borrar contratos. - - -\n" )
+    print ( "=" * 55 )
+    if not contratos_generados:
+        print("\n" + "=" * 55)
+        print("\n- - - No hay contratos para borrar. - - -\n")
+        print("=" * 55)
+        return
+    try:
+        id_borrar = int(input("\nIngrese el ID del contrato a borrar: "))
+        contrato_encontrado = None
+        indice_contrato = -1
+        for i, contrato in enumerate(contratos_generados):
+            id_actual, tipo, nombre_archivo, cliente, contenido = contrato
+            if id_actual == id_borrar:
+                contrato_encontrado = contrato
+                indice_contrato = i
+                break
+        if contrato_encontrado:
+            id_actual, tipo, nombre_archivo, cliente, contenido = contrato_encontrado
+            confirmacion = input(f"\n¿Está seguro que desea borrar el contrato ID {id_actual}? (s/n): ").lower()
+            if confirmacion == 's':
+                if os.path.exists(nombre_archivo):
+                    try:
+                        os.remove(nombre_archivo)
+                        print(f"\n- - - Archivo {os.path.basename(nombre_archivo)} eliminado. - - -")
+                    except Exception as error:
+                        print(f"\n- - - Error al eliminar el archivo: {error}. - - -")
+                        logging.error(f"Error al eliminar archivo {nombre_archivo}: {error}")
+                contratos_generados.pop(indice_contrato)
+                actualizar_registro()
+                print("\n" + "=" * 55)
+                print(f"\n- - - Contrato ID {id_actual} borrado correctamente. - - -\n")
+                print("=" * 55)
+            else:
+                print ( "\n" + "=" * 55 )
+                print("\n- - - Operación cancelada. - - -\n")
+                print ( "=" * 55 )
+        else:
+            print("\n" + "=" * 55)
+            print("\n- - - No se encontró un contrato con ese ID. - - -\n")
+            print("=" * 55)
+    except ValueError:
+        print("\n" + "=" * 55)
+        print("\n- - - Por favor ingrese un número válido. - - -\n")
+        print("=" * 55)
+    except Exception as error:
+        error_msg = f"Error al borrar el contrato: {error}"
+        print(error_msg)
+        logging.error(error_msg)

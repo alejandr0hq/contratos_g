@@ -35,14 +35,14 @@ contador_contratos = 1
 # ====================================================================
 
 def validar_nombre ( nombre ) :
+    nombre = nombre.strip ( )
     if not nombre or len ( nombre.strip ( ) ) < 2 :
         return False
-    return True
+    return all ( c.isalpha ( ) or c.isspace ( ) for c in nombre)
 
 def validar_telefono ( telefono ) :
-    if len ( telefono ) < 9 or len ( telefono ) > 13 :
-        return False
-    return True
+    telefono = telefono.strip ( )
+    return telefono.isdigit ( ) and 9 <= len ( telefono ) <= 13
 
 def validar_precio ( precio_str ) :
     try :
@@ -548,6 +548,9 @@ def editar_contrato ( ) :
 # BORRAR CONTRATO   
 # ====================================================================
 def borrar_contrato():
+    print ( "\n" + "=" * 55 )
+    print ( "\n- - - Borrar contratos. - - -\n" )
+    print ( "=" * 55 )
     if not contratos_generados:
         print("\n" + "=" * 55)
         print("\n- - - No hay contratos para borrar. - - -\n")
@@ -580,7 +583,9 @@ def borrar_contrato():
                 print(f"\n- - - Contrato ID {id_actual} borrado correctamente. - - -\n")
                 print("=" * 55)
             else:
+                print ( "\n" + "=" * 55 )
                 print("\n- - - Operación cancelada. - - -\n")
+                print ( "=" * 55 )
         else:
             print("\n" + "=" * 55)
             print("\n- - - No se encontró un contrato con ese ID. - - -\n")

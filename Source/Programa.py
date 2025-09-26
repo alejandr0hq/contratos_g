@@ -7,6 +7,7 @@ from .Operaciones import (
     buscar_contrato,
     mostrar_contrato_completo,
     editar_contrato,
+    borrar_contrato
 )
 from .Registro import cargar_contratos_desde_registro
 from .Logger import logging
@@ -61,7 +62,7 @@ def programa_principal():
     while True:
         try:
             mostrar_menu_principal()
-            opcion = input("\nSeleccione una opción (1-6): ").strip()
+            opcion = input("\nSeleccione una opción (1-7): ").strip()
             if opcion == '1':
                 mostrar_menu_contratos()
                 opcion = input("\nSeleccione una opción (1-4): ").strip()
@@ -86,6 +87,8 @@ def programa_principal():
             elif opcion == '5':
                 editar_contrato()
             elif opcion == '6':
+                borrar_contrato
+            elif opcion == '7':
                 print("\n" + "=" * 55)
                 print("\n- - - Gracias por usar el Generador de Contratos - - -")
                 print("- - - Todos los contratos han sido guardados correctamente. - - -\n")
@@ -93,7 +96,7 @@ def programa_principal():
                 break
             else:
                 print("\n" + "=" * 55)
-                print("\n- - - Opción inválida. Por favor seleccione una opción del 1 al 6. - - -\n")
+                print("\n- - - Opción inválida. Por favor seleccione una opción del 1 al 7. - - -\n")
                 print("=" * 55)
             input("\nPresione Enter para continuar...")
         except KeyboardInterrupt:
