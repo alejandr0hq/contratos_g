@@ -1,3 +1,7 @@
 4|prestacion_servicios|contratos/prestacion_servicios_Oscar_Gabriel_Reyes_Delgado_4.txt|Oscar Gabriel Reyes Delgado
 5|prestacion_servicios|contratos/prestacion_servicios_Kevin_Alejandro_Hernandez_Quintana_5.txt|Kevin Alejandro Hernandez Quintana
+<<<<<<< HEAD
+6|compra_venta|contratos/compra_venta_Kenneth_Zuany_6.txt|Kenneth Zuany7|prestacion_servicios|contratos/prestacion_servicios_Asdasd_7.txt|Asdasd
+=======
 6|compra_venta|contratos/compra_venta_Kenneth_Zuany_6.txt|Kenneth Zuany
+>>>>>>> 855b638cef31002947b820b6c338f162d0c9b2bc

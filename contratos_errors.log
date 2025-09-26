@@ -3,3 +3,19 @@
 2025-09-25 12:31:10,654 - ERROR - Error en el proceso de generación: 'nombre_Completo_prestador'
 2025-09-25 12:33:23,144 - ERROR - Error en el proceso de generación: 'fecha'
 2025-09-25 12:38:20,481 - ERROR - Error en el proceso de generación: 'fecha'
+2025-09-26 14:49:04,396 - ERROR - Línea 3 del registro mal formateada: <<<<<<< HEAD
+
+2025-09-26 14:49:04,396 - ERROR - Línea 4 del registro mal formateada: 6|compra_venta|contratos/compra_venta_Kenneth_Zuany_6.txt|Kenneth Zuany7|prestacion_servicios|contratos/prestacion_servicios_Asdasd_7.txt|Asdasd
+
+2025-09-26 14:49:04,401 - ERROR - Línea 5 del registro mal formateada: =======
+
+2025-09-26 14:49:04,401 - ERROR - Línea 7 del registro mal formateada: >>>>>>> 855b638cef31002947b820b6c338f162d0c9b2bc
+
+2025-09-26 14:51:46,499 - ERROR - Línea 3 del registro mal formateada: <<<<<<< HEAD
+
+2025-09-26 14:51:46,499 - ERROR - Línea 4 del registro mal formateada: 6|compra_venta|contratos/compra_venta_Kenneth_Zuany_6.txt|Kenneth Zuany7|prestacion_servicios|contratos/prestacion_servicios_Asdasd_7.txt|Asdasd
+
+2025-09-26 14:51:46,499 - ERROR - Línea 5 del registro mal formateada: =======
+
+2025-09-26 14:51:46,499 - ERROR - Línea 7 del registro mal formateada: >>>>>>> 855b638cef31002947b820b6c338f162d0c9b2bc
+
