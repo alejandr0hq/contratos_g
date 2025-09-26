@@ -1,0 +1,5 @@
+1|arrendamiento|contratos/arrendamiento_Kennet_1.txt|Kennet
+1|arrendamiento|contratos/arrendamiento_asd_1.txt|asd
+1|arrendamiento|contratos/arrendamiento_dfgdfg_1.txt|dfgdfg
+1|arrendamiento|contratos/arrendamiento_asdasdas_1.txt|asdasdas
+1|compra_venta|contratos/compra_venta_asd_1.txt|asd
