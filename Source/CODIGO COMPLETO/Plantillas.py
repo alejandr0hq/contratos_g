@@ -1,11 +1,11 @@
-plantillas_contratos = {
+plantillas_contratos = {        
     'prestacion_servicios': {
         'titulo': 'CONTRATO DE PRESTACIÓN DE SERVICIOS',
         'campos': [
             'nombre_completo_prestador', 'telefono_prestador', 'direccion_prestador',
             'nombre_completo_cliente', 'telefono_cliente', 'direccion_cliente',
-            'descripcion_servicio', 'valor_contrato', 'forma_pago',
-            'fecha_inicio', 'fecha_fin', 'ciudad'
+            'descripcion_servicio', 'valor_contrato', 'fecha_inicio',
+            'fecha_fin', 'forma_pago', 'ciudad'
         ]
     },
     'arrendamiento': {
@@ -22,7 +22,7 @@ plantillas_contratos = {
         'campos': [
             'nombre_completo_vendedor', 'telefono_vendedor', 'direccion_vendedor',
             'nombre_completo_comprador', 'telefono_comprador', 'direccion_comprador',
-            'descripcion_bien', 'valor_bien', 'fecha_transaccion', 'ciudad'
+            'descripcion_bien', 'valor_bien', 'ciudad', 'fecha_transaccion'
         ]
     }
 }
