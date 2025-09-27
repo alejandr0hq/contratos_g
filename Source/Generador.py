@@ -19,14 +19,14 @@ CLÁUSULAS:
 
 {clausulas}
 
-Dado en {ciudad}, a los {fecha_actual}
+Dado en {ciudad}, el dia {fecha_actual}
+
 
 
 ______________________________            ______________________________
 {parte1_rol_mayuscula:^30}            {parte2_rol_mayuscula:^30}
 {parte1_nombre:^30}            {parte2_nombre:^30}
 Teléfono: {parte1_telefono:^20}            Teléfono: {parte2_telefono:^20}
-
 """
 
     if tipo_contrato == 'prestacion_servicios':
